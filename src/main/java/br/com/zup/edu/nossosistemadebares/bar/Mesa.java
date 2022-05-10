@@ -14,7 +14,7 @@ public class Mesa {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatusOcupacao status = LIVRE;
+    private StatusOcupacao status = Livre;
 
     @Column
     private String reservadoPara;
@@ -41,5 +41,13 @@ public class Mesa {
 
     public Long getId() {
         return id;
+    }
+
+    public void atualiza(Integer capacidade) {
+        this.capacidade = capacidade;
+    }
+
+    public void mudaStatusParaOcupado() {
+        this.status = OCUPADO;
     }
 }
