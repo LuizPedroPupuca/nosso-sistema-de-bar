@@ -3,7 +3,7 @@ package br.com.zup.edu.nossosistemadebares.bar;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-import static br.com.zup.edu.nossosistemadebares.bar.StatusOcupacao.*;
+
 import static java.time.LocalDateTime.*;
 
 @Entity
@@ -14,7 +14,7 @@ public class Mesa {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatusOcupacao status = Livre;
+    private StatusOcupacao status = StatusOcupacao.LIVRE;
 
     @Column
     private String reservadoPara;
@@ -27,6 +27,9 @@ public class Mesa {
 
     @Column(nullable = false)
     private Integer capacidade;
+
+    @Version
+    int version;
 
     public Mesa(Integer capacidade){
         this.capacidade=capacidade;
@@ -48,6 +51,6 @@ public class Mesa {
     }
 
     public void mudaStatusParaOcupado() {
-        this.status = OCUPADO;
+        this.status = StatusOcupacao.OCUPADO;
     }
 }

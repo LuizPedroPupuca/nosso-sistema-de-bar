@@ -34,7 +34,7 @@ public class CadastrarMesaController {
         return ResponseEntity.created(location).build();
     }
 
-    @PutMapping("/{id?")
+    @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<?> atualizar(@RequestBody @Valid MesaRequest request, @PathVariable Long id) {
 
